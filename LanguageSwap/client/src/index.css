@@ -1,0 +1,709 @@
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&family=Inter:wght@300;400;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(220, 50%, 8%);
+  --foreground: hsl(210, 40%, 92%);
+  --card: hsl(220, 50%, 8%, 0.3);
+  --card-foreground: hsl(210, 40%, 92%);
+  --popover: hsl(220, 50%, 8%);
+  --popover-foreground: hsl(210, 40%, 92%);
+  --primary: hsl(200, 100%, 50%);
+  --primary-foreground: hsl(220, 50%, 8%);
+  --secondary: hsl(225, 73%, 70%);
+  --secondary-foreground: hsl(210, 40%, 92%);
+  --muted: hsl(210, 30%, 65%);
+  --muted-foreground: hsl(210, 40%, 92%);
+  --accent: hsl(200, 100%, 50%);
+  --accent-foreground: hsl(220, 50%, 8%);
+  --destructive: hsl(356, 90%, 54%);
+  --destructive-foreground: hsl(0, 0%, 100%);
+  --border: hsl(220, 50%, 20%, 0.2);
+  --input: hsl(207, 28%, 18%);
+  --ring: hsl(200, 100%, 50%);
+  --radius: 14px;
+
+  /* Novaweb Custom Variables */
+  --bg1: hsl(220, 50%, 8%);
+  --bg2: hsl(208, 58%, 10%);
+  --novaweb-card: hsla(0, 0%, 100%, 0.03);
+  --novaweb-accent: hsl(200, 100%, 50%);
+  --novaweb-accent-2: hsl(225, 73%, 70%);
+  --novaweb-muted: hsl(210, 30%, 65%);
+  --novaweb-glass: hsla(0, 0%, 100%, 0.04);
+  --container: 1100px;
+
+  --font-sans: 'Inter', 'Tajawal', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  --font-serif: Georgia, serif;
+  --font-mono: Menlo, monospace;
+}
+
+.dark {
+  --background: hsl(220, 50%, 8%);
+  --foreground: hsl(210, 40%, 92%);
+  --card: hsl(220, 50%, 8%, 0.3);
+  --card-foreground: hsl(210, 40%, 92%);
+  --popover: hsl(220, 50%, 8%);
+  --popover-foreground: hsl(210, 40%, 92%);
+  --primary: hsl(200, 100%, 50%);
+  --primary-foreground: hsl(220, 50%, 8%);
+  --secondary: hsl(225, 73%, 70%);
+  --secondary-foreground: hsl(210, 40%, 92%);
+  --muted: hsl(210, 30%, 65%);
+  --muted-foreground: hsl(210, 40%, 92%);
+  --accent: hsl(200, 100%, 50%);
+  --accent-foreground: hsl(220, 50%, 8%);
+  --destructive: hsl(356, 90%, 54%);
+  --destructive-foreground: hsl(0, 0%, 100%);
+  --border: hsl(220, 50%, 20%, 0.2);
+  --input: hsl(207, 28%, 18%);
+  --ring: hsl(200, 100%, 50%);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+    box-sizing: border-box;
+  }
+
+  html, body {
+    height: 100%;
+  }
+
+  body {
+    margin: 0;
+    font-family: var(--font-sans);
+    background: linear-gradient(180deg, var(--bg1), var(--bg2));
+    color: hsl(210, 40%, 92%);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.55;
+    transition: direction 0.3s ease;
+    @apply font-sans antialiased;
+  }
+
+  body[dir="rtl"] {
+    font-family: 'Tajawal', 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  }
+
+  #root {
+    min-height: 100vh;
+  }
+}
+
+@layer components {
+  .novaweb-container {
+    width: 92%;
+    max-width: var(--container);
+    margin: 0 auto;
+  }
+
+  /* Header Styles */
+  .novaweb-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 40;
+    background: linear-gradient(90deg, hsla(0, 0%, 2%, 0.45), hsla(0, 0%, 2%, 0.15));
+    backdrop-filter: blur(6px);
+  }
+
+  .novaweb-header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 0;
+  }
+
+  .novaweb-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: var(--novaweb-accent);
+    font-weight: 700;
+  }
+
+  .novaweb-logo-img {
+    width: 60px;
+    height: 50px;
+  }
+
+  .novaweb-nav {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+
+  .novaweb-nav a {
+    color: hsl(200, 58%, 85%);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+  }
+
+  .novaweb-nav a:hover {
+    color: var(--novaweb-accent);
+  }
+
+  .novaweb-nav-cta {
+    background: transparent;
+    border: 1px solid hsla(0, 0%, 100%, 0.06);
+    padding: 8px 12px;
+    border-radius: 9px;
+    transition: all 0.3s ease;
+  }
+
+  .novaweb-nav-cta:hover {
+    background: hsla(0, 0%, 100%, 0.05);
+    border-color: var(--novaweb-accent);
+  }
+
+  /* Language Selector */
+  .language-selector {
+    position: relative;
+    display: inline-block;
+  }
+
+  .language-toggle {
+    background: hsla(0, 0%, 100%, 0.05);
+    border: 1px solid hsla(0, 0%, 100%, 0.1);
+    color: hsl(200, 58%, 85%);
+    padding: 8px 14px;
+    border-radius: 9px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    font-size: 14px;
+  }
+
+  .language-toggle:hover {
+    background: hsla(0, 0%, 100%, 0.08);
+    border-color: var(--novaweb-accent);
+  }
+
+  .language-toggle svg {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.3s ease;
+  }
+
+  .language-selector.active .language-toggle svg {
+    transform: rotate(180deg);
+  }
+
+  .language-dropdown {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    background: hsla(220, 50%, 8%, 0.98);
+    backdrop-filter: blur(12px);
+    border: 1px solid hsla(0, 0%, 100%, 0.1);
+    border-radius: 12px;
+    min-width: 180px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px hsla(0, 0%, 0%, 0.5);
+    z-index: 50;
+  }
+
+  body[dir="rtl"] .language-dropdown {
+    right: auto;
+    left: 0;
+  }
+
+  .language-selector.active .language-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .language-option {
+    padding: 12px 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: hsl(200, 58%, 85%);
+    transition: all 0.2s ease;
+    font-size: 14px;
+  }
+
+  .language-option:first-child {
+    border-radius: 12px 12px 0 0;
+  }
+
+  .language-option:last-child {
+    border-radius: 0 0 12px 12px;
+  }
+
+  .language-option:hover {
+    background: hsla(200, 100%, 50%, 0.1);
+    color: var(--novaweb-accent);
+  }
+
+  .language-option.active {
+    background: hsla(200, 100%, 50%, 0.15);
+    color: var(--novaweb-accent);
+    font-weight: 700;
+  }
+
+  .language-flag {
+    font-size: 20px;
+    line-height: 1;
+  }
+
+  .nav-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    color: hsl(200, 58%, 85%);
+    font-size: 20px;
+    cursor: pointer;
+  }
+
+  /* Hero Section */
+  .novaweb-hero {
+    position: relative;
+    min-height: 68vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 80px 0 40px;
+  }
+
+  .novaweb-hero-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    z-index: 0;
+  }
+
+  .novaweb-hero-inner {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    gap: 28px;
+    align-items: start;
+  }
+
+  .novaweb-hero-copy {
+    max-width: 760px;
+  }
+
+  .novaweb-hero h1 {
+    font-size: 40px;
+    line-height: 1.12;
+    margin: 0 0 12px;
+    color: hsl(210, 60%, 95%);
+  }
+
+  .novaweb-lead {
+    color: var(--novaweb-muted);
+    margin: 0 0 20px;
+  }
+
+  .novaweb-buttons {
+    margin-top: 12px;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .novaweb-btn {
+    display: inline-block;
+    padding: 12px 18px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: all 0.3s ease;
+  }
+
+  .novaweb-btn-primary {
+    background: linear-gradient(90deg, var(--novaweb-accent), var(--novaweb-accent-2));
+    color: hsl(220, 50%, 8%);
+    box-shadow: 0 10px 30px hsla(12, 93%, 50%, 0.12);
+  }
+
+  .novaweb-btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 40px hsla(12, 93%, 50%, 0.2);
+  }
+
+  .novaweb-btn-ghost {
+    border: 1px solid hsla(0, 0%, 100%, 0.06);
+    color: hsl(200, 58%, 85%);
+    background: transparent;
+  }
+
+  .novaweb-btn-ghost:hover {
+    background: hsla(0, 0%, 100%, 0.05);
+    border-color: var(--novaweb-accent);
+  }
+
+  .novaweb-hero-card {
+    background: linear-gradient(180deg, hsla(0, 0%, 100%, 0.02), hsla(0, 0%, 100%, 0.01));
+    padding: 18px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px hsla(2, 6%, 4%, 0.6);
+    border: 1px solid hsla(0, 0%, 100%, 0.05);
+  }
+
+  /* Sections */
+  .novaweb-section {
+    padding: 46px 0;
+  }
+
+  .novaweb-section-title {
+    font-size: 28px;
+    margin: 0 0 8px;
+    color: hsl(210, 60%, 95%);
+  }
+
+  .novaweb-section-lead {
+    color: var(--novaweb-muted);
+    margin: 0 0 18px;
+    font-size: 16px;
+  }
+
+  /* Cards Grid */
+  .novaweb-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-top: 32px;
+  }
+
+  .novaweb-card {
+    background: var(--novaweb-card);
+    padding: 24px;
+    border-radius: var(--radius);
+    box-shadow: 0 6px 18px hsla(2, 6%, 4%, 0.6);
+    transition: transform 0.28s ease, box-shadow 0.28s ease;
+    border: 1px solid hsla(0, 0%, 100%, 0.05);
+  }
+
+  .novaweb-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 18px 40px hsla(2, 6%, 4%, 0.8);
+  }
+
+  .novaweb-card .icon {
+    font-size: 36px;
+    margin-bottom: 12px;
+  }
+
+  .novaweb-card h3 {
+    margin: 8px 0;
+    color: hsl(210, 60%, 95%);
+  }
+
+  .novaweb-card p {
+    color: var(--novaweb-muted);
+    margin: 8px 0 0;
+  }
+
+  /* Projects */
+  .novaweb-projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-top: 32px;
+  }
+
+  .novaweb-project {
+    position: relative;
+    display: block;
+    border-radius: 12px;
+    overflow: hidden;
+    background: linear-gradient(180deg, hsla(0, 0%, 100%, 0.02), hsla(0, 0%, 100%, 0.01));
+    transition: transform 0.28s ease, box-shadow 0.28s ease;
+    border: 1px solid hsla(0, 0%, 100%, 0.05);
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .novaweb-project img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+    filter: contrast(0.95) saturate(1.05);
+  }
+
+  .novaweb-project-meta {
+    padding: 12px 14px;
+  }
+
+  .novaweb-project-meta h4 {
+    margin: 0 0 4px;
+    color: hsl(210, 60%, 95%);
+  }
+
+  .novaweb-project-meta p {
+    margin: 0;
+    color: var(--novaweb-muted);
+    font-size: 14px;
+  }
+
+  .novaweb-project:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 50px hsla(0, 0%, 0%, 0.6);
+  }
+
+  /* Testimonials */
+  .novaweb-testimonial-slider {
+    display: flex;
+    gap: 12px;
+    overflow: hidden;
+    position: relative;
+    margin-top: 32px;
+  }
+
+  .novaweb-testimonial {
+    min-width: 100%;
+    background: var(--novaweb-card);
+    padding: 24px;
+    border-radius: 12px;
+    border: 1px solid hsla(0, 0%, 100%, 0.05);
+    font-style: italic;
+    color: var(--novaweb-muted);
+    transition: transform 0.5s ease;
+  }
+
+  /* CTA Section */
+  .novaweb-cta {
+    background: linear-gradient(135deg, hsla(200, 100%, 50%, 0.1), hsla(225, 73%, 70%, 0.05));
+    border-radius: 16px;
+    padding: 48px 32px;
+    text-align: center;
+    border: 1px solid hsla(0, 0%, 100%, 0.08);
+  }
+
+  .novaweb-cta h3 {
+    font-size: 28px;
+    margin: 0 0 20px;
+    color: hsl(210, 60%, 95%);
+  }
+
+  /* Footer */
+  .novaweb-footer {
+    padding: 36px 0;
+    background: linear-gradient(180deg, hsl(220, 60%, 2%), hsl(208, 60%, 5%));
+    color: var(--novaweb-muted);
+  }
+
+  .novaweb-footer-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+
+  .novaweb-footer strong {
+    color: hsl(210, 60%, 95%);
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .novaweb-footer a {
+    color: var(--novaweb-accent);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .novaweb-footer a:hover {
+    color: var(--novaweb-accent-2);
+  }
+
+  /* Contact Form */
+  .novaweb-contact-section {
+    text-align: center;
+    padding: 80px 20px;
+  }
+
+  .novaweb-contact-grid {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 50px;
+    flex-wrap: wrap;
+  }
+
+  .novaweb-contact-form {
+    background: hsla(0, 0%, 100%, 0.05);
+    backdrop-filter: blur(12px);
+    border-radius: 16px;
+    padding: 30px;
+    width: 100%;
+    max-width: 450px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .novaweb-contact-form label {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    color: hsl(200, 58%, 85%);
+    font-weight: 500;
+  }
+
+  .novaweb-contact-form input,
+  .novaweb-contact-form textarea {
+    padding: 14px;
+    border-radius: 12px;
+    border: 1px solid hsla(0, 0%, 100%, 0.15);
+    background: hsla(0, 0%, 100%, 0.08);
+    color: hsl(210, 40%, 92%);
+    font-family: inherit;
+    transition: 0.3s;
+  }
+
+  .novaweb-contact-form input:focus,
+  .novaweb-contact-form textarea:focus {
+    outline: none;
+    border-color: var(--novaweb-accent);
+    box-shadow: 0 0 10px hsla(200, 100%, 50%, 0.4);
+  }
+
+  .novaweb-contact-form button {
+    padding: 14px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(90deg, var(--novaweb-accent), var(--novaweb-accent-2));
+    color: hsl(220, 50%, 8%);
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+  }
+
+  .novaweb-contact-form button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px hsla(200, 100%, 50%, 0.3);
+  }
+
+  .novaweb-contact-info {
+    background: hsla(0, 0%, 100%, 0.05);
+    backdrop-filter: blur(12px);
+    border-radius: 16px;
+    padding: 30px;
+    max-width: 300px;
+    color: hsl(200, 58%, 85%);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    text-align: left;
+  }
+
+  .novaweb-contact-info a {
+    color: var(--novaweb-accent);
+    text-decoration: none;
+  }
+
+  .novaweb-contact-info a:hover {
+    text-decoration: underline;
+  }
+
+  /* Team Grid */
+  .novaweb-team-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+
+  .novaweb-team-member {
+    text-align: center;
+    background: var(--novaweb-card);
+    padding: 18px;
+    border-radius: 12px;
+    border: 1px solid hsla(0, 0%, 100%, 0.05);
+  }
+
+  /* Fade animation for content changes */
+  .fade-transition {
+    opacity: 1;
+    transition: opacity 0.3s ease;
+  }
+
+  .fade-transition.fading {
+    opacity: 0;
+  }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .novaweb-cards-grid,
+    .novaweb-projects-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .novaweb-hero-inner {
+      grid-template-columns: 1fr;
+    }
+    
+    .nav-toggle {
+      display: inline-block;
+    }
+    
+    .novaweb-nav a,
+    .language-selector {
+      display: none;
+    }
+    
+    .novaweb-nav.active a,
+    .novaweb-nav.active .language-selector {
+      display: block;
+    }
+    
+    .novaweb-nav.active {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: hsla(220, 50%, 8%, 0.98);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid hsla(0, 0%, 100%, 0.1);
+      padding: 20px;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    
+    .novaweb-footer-grid {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+    
+    .novaweb-contact-grid {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .novaweb-cards-grid,
+    .novaweb-projects-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .novaweb-hero h1 {
+      font-size: 32px;
+    }
+    
+    .novaweb-section-title {
+      font-size: 24px;
+    }
+  }
+}
